@@ -1,0 +1,15 @@
+.table-data tr:nth-child(odd){
+    background-color: rgb(252, 246, 246);
+}
+.btns .submit-btn{
+  margin-left: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+  
+}
+.btns .cancel-btn{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+}
