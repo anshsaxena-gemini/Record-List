@@ -112,12 +112,7 @@ function CreateUser(props) {
       value={formik.catagory}
       onBlur={formik.handleBlur}
       >
-        <option 
-      value=""
-      selected disabled
-      >
-      Select
-      </option>
+  
       <option 
       value="General"
       >

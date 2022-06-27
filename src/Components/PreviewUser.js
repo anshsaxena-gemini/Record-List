@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PreviewUser.css'
 import { useNavigate } from 'react-router';
+import ViewUser from './ViewUser';
 
 function PreviewUser(props) {
    const [preview,setPreview] = useState(null);
    const navigate = useNavigate();
-   const [input,setInput] = useState([]);
    const reader = new FileReader();
    const handleSubmit = () =>
    {
-    
+    props.onSubmit(true);
+    setPreview(null)
+    navigate("/ViewUser")
    }
    const handleCancel =()=>{
      navigate("/")

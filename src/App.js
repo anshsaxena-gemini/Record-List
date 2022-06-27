@@ -11,6 +11,8 @@ import { useState } from 'react';
 
 function App() {
   const [data,setData] = useState([]);
+  const [preview,setPreviewData] = useState([]);
+  const [isConfirmed,setConfirmed] = useState(false);
   const addNewUser = (profile,name,gender,email,mobile,catagory,technology) =>
   {
     setData((prevUsersList) =>{
@@ -23,15 +25,29 @@ function App() {
         },
       ];
     })
+    setPreviewData(() =>{
+      return [
+        {
+          uProfile : profile ,uName : name , uGender : gender , uEmail : email ,
+          uMobile : mobile , uCatagory : catagory ,
+          uTechnology : technology
+        },
+      ];
+    })
    
+  }
+  const saveData = (input) =>{
+     if(input === true){
+      setConfirmed(true);
+     }
   }
   return (
     <div className="App">
      <BrowserRouter>
      <Routes>
       <Route path='/' element={<CreateUser onAddUser={addNewUser}/>} />
-      <Route path='/ViewUser' element={<ViewUser onSubmit={data}/>} />
-      <Route path='/PreviewUser' element={<PreviewUser users={data} />} /> 
+      <Route path='/ViewUser' element={<ViewUser input={isConfirmed} users={data}/>} />
+      <Route path='/PreviewUser' element={<PreviewUser users={preview} onSubmit={saveData} />} /> 
      </Routes>
      </BrowserRouter>
     </div>
