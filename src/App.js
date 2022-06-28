@@ -44,7 +44,7 @@ function App() {
     <div className="App">
      <BrowserRouter>
      <Routes>
-      <Route path='/' element={<CreateUser onAddUser={addNewUser}/>} />
+      <Route path='/CreateUser' element={<CreateUser onAddUser={addNewUser}/>} />
       <Route path='/ViewUser' element={<ViewUser users={data}/>} />
       <Route path='/PreviewUser' element={<PreviewUser users={preview} onSubmit={saveData} />} /> 
      </Routes>
