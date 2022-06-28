@@ -10,13 +10,18 @@ function PreviewUser(props) {
    const reader = new FileReader();
    const handleSubmit = () =>
    {
-    props.onSubmit(true);
+    props.users.map((user)=>{
+      props.onSubmit(user.uName,user.uGender,user.uEmail,user.uMobile,user.uCatagory,user.uTechnology)
+      
+   })
     setPreview(null)
     navigate("/ViewUser")
    }
    const handleCancel =()=>{
+    // props.onSubmit(false);
      navigate("/")
    }
+   console.log(props.users.uName);
 
   return (
     

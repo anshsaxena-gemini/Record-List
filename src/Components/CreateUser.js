@@ -2,7 +2,7 @@ import React,{useRef} from 'react'
 import NavigationBar from '../UI/NavigationBar'
 import {useFormik} from 'formik';
 import * as yup from 'yup';
-import PreviewUser from './PreviewUser';
+import './CreateUser.css'
 import { useNavigate } from 'react-router';
 
 
@@ -28,7 +28,7 @@ function CreateUser(props) {
             mobile : yup.string().required("Phone Number is required !").matches(/^\d{10}$/,"Not valid !"),
             catagory : yup.string().required("Select your catagory !"),
             technology :yup.array().min(1,"Select at least one technology!"),
-            
+            profile:yup.mixed().required("Upload your profile !")
            
             
          })
@@ -47,9 +47,12 @@ function CreateUser(props) {
     <div>
      
     <NavigationBar />
-    <u><h1>Create User</h1><br></br></u>
+    <div className='container'>
+    <h1 className='header'>Create User</h1><br></br>
+    
     <form className='form-group' onSubmit={formik.handleSubmit}>
       <input 
+      className='name'
       type="text"
       name="uName"
       placeholder='Enter your name'
@@ -57,12 +60,14 @@ function CreateUser(props) {
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       />
-      <div>
+      <div className="error">
         {formik.touched.uName ? formik.errors.uName : ""}
       </div>
-    <br></br>
-      <label htmlFor='gender'>Gender </label>
-      <label>
+   
+       <label htmlFor='gender'>Gender : </label>
+     
+      <div className='gender'>
+      <div>
       <input
       type="radio"
       name="gender"
@@ -70,7 +75,11 @@ function CreateUser(props) {
       value="Male"
       />
       <label>
+      
      Male </label>
+     </div>
+     <div>
+     <label>
        <input
       type="radio" 
       name="gender"
@@ -78,22 +87,25 @@ function CreateUser(props) {
       onChange={formik.handleChange}
       />
       Female </label>
-      <div>
+      </div>
+     
+      </div>
+      <div className="error">
       {formik.touched.gender ? formik.errors.gender : ""}
       </div>
-     <br></br>
       <input type="text"
+      className='email'
        placeholder='Enter your email'
        name="email"
        onChange={formik.handleChange}
        value={formik.email}
        onBlur={formik.handleBlur}
        />
-       <div>
+       <div className="error">
         {formik.touched.email ? formik.errors.email : ""}
        </div>
-        <br></br>
         <input 
+        className='mobile'
         type="text"
         placeholder='Enter your Mobile Number'
         name="mobile"
@@ -101,10 +113,10 @@ function CreateUser(props) {
         value={formik.mobile}
         onBlur={formik.handleBlur}
         />
-        <div>
+        <div className="error">
         {formik.touched.mobile ? formik.errors.mobile : ""}
         </div>
- <br></br>
+      <div className='catagory'>
       <label htmlFor='catagory'>Catagory :</label>
       <select
       name='catagory'
@@ -112,7 +124,12 @@ function CreateUser(props) {
       value={formik.catagory}
       onBlur={formik.handleBlur}
       >
-  
+      <option 
+      value=""
+      selected disabled
+      >
+        Select
+      </option>
       <option 
       value="General"
       >
@@ -134,18 +151,20 @@ function CreateUser(props) {
         ST
       </option>
       </select>
-      <div>
+      </div>
+      <div className="error">
       {formik.touched.catagory ? formik.errors.catagory : ""}
       </div>
-       <br></br>
-       <label htmlFor='tech'>Technology : </label>
+      
+       <div className='technology'>
+       <label htmlFor='tech' className='tech-label'>Technology : </label>
        <label>
        <input 
        type="checkbox"
        value="Java"
        name="technology"
        onChange={formik.handleChange}
-       />
+       /> 
         Java
         </label>
         <label>
@@ -175,11 +194,11 @@ function CreateUser(props) {
        />
         SQL
         </label>
-        <div>
+        </div>
+        <div className="error">
         {formik.touched.technology ? formik.errors.technology : ""}
         </div>
-        <br></br>
-        <label htmlFor='profile'>Profile : </label>
+        <label htmlFor='profile' className='profile' >Profile :  </label>
      
           <input
           id="file"
@@ -190,7 +209,7 @@ function CreateUser(props) {
           />
         
        
-        <div>
+        <div className="error">
         {formik.touched.profile ? formik.errors.profile : ""}
         </div>
 
@@ -198,7 +217,7 @@ function CreateUser(props) {
       <button type='submit' className='btn btn-primary'>Preview</button>
 
     </form>
-     
+    </div>
     </div>
   )
 }

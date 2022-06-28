@@ -1,8 +1,8 @@
 import React from 'react'
 import NavigationBar from '../UI/NavigationBar'
+import '../Components/ViewUser.css';
 
 function ViewUser(props) {
-  const shouldAdd = props.input;
   return (
     <div>
         <NavigationBar />
@@ -20,7 +20,7 @@ function ViewUser(props) {
               <th scope='col'>Profile</th>
             </tr>
           </thead>
-          { shouldAdd && props.users.map((user) => (
+          {  props.users.map((user) => (
           <tbody>
             <tr scope='row'>
             <td>{user.uName}</td>
@@ -29,7 +29,7 @@ function ViewUser(props) {
             <td>{user.uMobile}</td>
             <td>{user.uCatagory}</td>
             <td>{user.uTechnology.join(' , ')}</td>
-            <td></td>
+            <td>Image</td>
             </tr>
           </tbody>
     ))}

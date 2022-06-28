@@ -13,21 +13,22 @@ function App() {
   const [data,setData] = useState([]);
   const [preview,setPreviewData] = useState([]);
   const [isConfirmed,setConfirmed] = useState(false);
+  
+  // const saveData = (input) =>{
+  //    if(input === true){
+  //     setConfirmed(true);
+  //    }
+  //    else{
+  //     setConfirmed(false)
+  //    }
+  // }
   const addNewUser = (profile,name,gender,email,mobile,catagory,technology) =>
   {
-    setData((prevUsersList) =>{
-      return [
-        ...prevUsersList,
-        {
-          uProfile : profile ,uName : name , uGender : gender , uEmail : email ,
-          uMobile : mobile , uCatagory : catagory ,
-          uTechnology : technology
-        },
-      ];
-    })
     setPreviewData(() =>{
       return [
+       
         {
+         
           uProfile : profile ,uName : name , uGender : gender , uEmail : email ,
           uMobile : mobile , uCatagory : catagory ,
           uTechnology : technology
@@ -36,17 +37,25 @@ function App() {
     })
    
   }
-  const saveData = (input) =>{
-     if(input === true){
-      setConfirmed(true);
-     }
+  const saveData = (name,gender,email,mobile,catagory,technology) =>{
+      setData((prevData)=>{
+        return [
+          ...prevData,
+           {
+           
+            uName : name , uGender : gender , uEmail : email ,
+            uMobile : mobile , uCatagory : catagory ,
+            uTechnology : technology
+           }
+        ]
+      })
   }
   return (
     <div className="App">
      <BrowserRouter>
      <Routes>
       <Route path='/' element={<CreateUser onAddUser={addNewUser}/>} />
-      <Route path='/ViewUser' element={<ViewUser input={isConfirmed} users={data}/>} />
+      <Route path='/ViewUser' element={<ViewUser users={data}/>} />
       <Route path='/PreviewUser' element={<PreviewUser users={preview} onSubmit={saveData} />} /> 
      </Routes>
      </BrowserRouter>
