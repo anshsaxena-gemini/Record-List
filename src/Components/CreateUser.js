@@ -205,6 +205,8 @@ function CreateUser(props) {
           type="file"
           accept=""
           ref={imageRef}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
          
           />
         
