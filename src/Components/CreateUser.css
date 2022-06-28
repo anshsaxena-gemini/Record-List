@@ -64,8 +64,8 @@ body{
     margin-top: 1%;
     width: 35%;
     height: 550px;
-   border:2px solid rgb(201, 182, 198);
-   background-color: rgba(248, 245, 245, 0.587);
+   /* border:2px solid rgba(201, 182, 198, 0.178); */
+   background-color: rgba(214, 190, 217, 0.349);
    border-radius: 20px;
 }
 .header{
