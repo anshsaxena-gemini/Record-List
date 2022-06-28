@@ -12,16 +12,6 @@ import { useState } from 'react';
 function App() {
   const [data,setData] = useState([]);
   const [preview,setPreviewData] = useState([]);
-  const [isConfirmed,setConfirmed] = useState(false);
-  
-  // const saveData = (input) =>{
-  //    if(input === true){
-  //     setConfirmed(true);
-  //    }
-  //    else{
-  //     setConfirmed(false)
-  //    }
-  // }
   const addNewUser = (profile,name,gender,email,mobile,catagory,technology) =>
   {
     setPreviewData(() =>{
